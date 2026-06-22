@@ -1,3 +1,4 @@
+```css
 *{
     margin:0;
     padding:0;
@@ -5,191 +6,165 @@
 }
 
 body{
-    min-height:100vh;
-    background:#0f172a;
+    background:linear-gradient(180deg,#0d4b2f,#093520);
     color:white;
-    font-family:Arial,sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
+    min-height:100vh;
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding-top:50px;
-    overflow:hidden;
 }
 
 h1{
-    margin-bottom:20px;
+    margin-top:20px;
+    font-size:3rem;
+    color:#facc15;
+}
+
+#scoreboard{
+    margin-top:20px;
+    background:rgba(255,255,255,.1);
+    padding:15px 30px;
+    border-radius:15px;
+    font-size:1.3rem;
+}
+
+#round-info{
+    margin-top:15px;
+    font-size:1.1rem;
+    color:#d1d5db;
+}
+
+#result{
+    margin-top:25px;
+    min-height:40px;
+    text-align:center;
 }
 
 #btn_start{
+    margin-top:40px;
     padding:15px 30px;
     border:none;
-    border-radius:10px;
-    background:#2563eb;
-    color:white;
+    border-radius:15px;
+    background:#facc15;
+    color:black;
+    font-size:1.1rem;
     cursor:pointer;
-    font-size:1rem;
-    transition:.2s;
+    transition:.3s;
 }
 
 #btn_start:hover{
-    background:#1d4ed8;
+    transform:scale(1.05);
 }
 
+/* cartas da IA */
 .ia-cards{
-    position:fixed;
-    top:20px;
-    left:50%;
-    transform:translateX(-50%);
+    margin-top:50px;
     display:flex;
-    align-items:flex-start;
+    gap:20px;
 }
 
+/* verso das cartas */
 .back-card{
-    width:120px;
-    height:180px;
-    margin-left:-40px;
-    border-radius:15px;
-    border:3px solid #222;
-    background:
-    linear-gradient(
-        45deg,
-        #8b0000 25%,
-        #b22222 25%,
-        #b22222 50%,
-        #8b0000 50%,
-        #8b0000 75%,
-        #b22222 75%
-    );
-    background-size:20px 20px;
-    box-shadow:0 5px 15px rgba(0,0,0,.5);
+    width:90px;
+    height:140px;
+    border-radius:12px;
+    background:linear-gradient(45deg,#1e3a8a,#2563eb);
+    border:2px solid white;
+    box-shadow:0 0 10px rgba(0,0,0,.4);
 }
 
-.back-card:first-child{
-    margin-left:0;
-}
-
-.player-cards{
-    position:fixed;
-    bottom:20px;
-    left:50%;
-    transform:translateX(-50%);
+/* arena central */
+#arena{
+    margin-top:40px;
     display:flex;
-    align-items:flex-end;
+    align-items:center;
+    gap:30px;
+    min-height:150px;
+}
+
+.played-card{
+    width:100px;
+    height:150px;
+    background:white;
+    color:black;
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2rem;
+    font-weight:bold;
+    box-shadow:0 0 15px rgba(0,0,0,.5);
+}
+
+.vs{
+    font-size:2rem;
+    font-weight:bold;
+}
+
+/* cartas do jogador */
+.player-cards{
+    margin-top:auto;
+    margin-bottom:40px;
+    display:flex;
+    gap:25px;
 }
 
 .letters-div,
 .manilha{
-    width:120px;
-    height:180px;
+    width:100px;
+    height:150px;
     border-radius:15px;
-    border:3px solid #333;
+    background:white;
+    color:black;
     display:flex;
     justify-content:center;
     align-items:center;
     font-size:2rem;
     font-weight:bold;
     cursor:pointer;
-    margin-left:-40px;
-    position:relative;
     transition:.2s;
-    box-shadow:0 5px 15px rgba(0,0,0,.4);
-}
-
-.letters-div{
-    background:white;
-    color:black;
-}
-
-.manilha{
-    background:gold;
-    color:black;
+    box-shadow:0 0 15px rgba(0,0,0,.4);
 }
 
 .letters-div:hover,
 .manilha:hover{
-    transform:translateY(-20px) scale(1.05);
-    z-index:100;
+    transform:translateY(-15px);
 }
 
-@media(max-width:768px){
-    .letters-div,
-    .manilha,
-    .back-card{
-        width:90px;
-        height:140px;
-        font-size:1.5rem;
-        margin-left:-30px;
-    }
+.manilha{
+    background:linear-gradient(135deg,#facc15,#f59e0b);
+    color:black;
 }
 
-@media(max-width:480px){
+/* responsivo */
+@media (max-width:768px){
+
     .letters-div,
     .manilha,
+    .played-card,
     .back-card{
         width:70px;
         height:110px;
-        font-size:1.2rem;
-        margin-left:-20px;
+        font-size:1.3rem;
+    }
+
+    h1{
+        font-size:2rem;
+    }
+
+    #scoreboard{
+        font-size:1rem;
+        padding:10px 20px;
+    }
+
+    .player-cards,
+    .ia-cards{
+        gap:10px;
+    }
+
+    #arena{
+        gap:15px;
     }
 }
-/* ── Placar e info de rodada ── */
-#scoreboard {
-    font-size: 1.2rem;
-    margin-bottom: 6px;
-    letter-spacing: 1px;
-}
-
-#round-info {
-    font-size: 0.95rem;
-    color: #94a3b8;
-    margin-bottom: 18px;
-}
-
-/* ── Arena central (cartas jogadas) ── */
-#arena {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    z-index: 200;
-    pointer-events: none;
-}
-
-.played-card {
-    width: 100px;
-    height: 150px;
-    border-radius: 12px;
-    border: 3px solid #444;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.8rem;
-    font-weight: bold;
-    background: white;
-    color: black;
-    box-shadow: 0 8px 24px rgba(0,0,0,.6);
-    animation: popIn .18s ease;
-}
-
-.vs {
-    font-size: 1.6rem;
-    font-weight: bold;
-    text-shadow: 0 0 12px currentColor;
-}
-
-@keyframes popIn {
-    from { transform: scale(0.6); opacity: 0; }
-    to   { transform: scale(1);   opacity: 1; }
-}
-
-/* ── resultado ── */
-#result {
-    font-size: 1.1rem;
-    min-height: 28px;
-    margin-bottom: 8px;
-    text-align: center;
-    transition: color .3s;
-}
+```
