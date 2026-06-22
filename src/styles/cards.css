@@ -1,0 +1,195 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    background:#0f172a;
+    color:white;
+    font-family:Arial,sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-top:50px;
+    overflow:hidden;
+}
+
+h1{
+    margin-bottom:20px;
+}
+
+#btn_start{
+    padding:15px 30px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+    font-size:1rem;
+    transition:.2s;
+}
+
+#btn_start:hover{
+    background:#1d4ed8;
+}
+
+.ia-cards{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    align-items:flex-start;
+}
+
+.back-card{
+    width:120px;
+    height:180px;
+    margin-left:-40px;
+    border-radius:15px;
+    border:3px solid #222;
+    background:
+    linear-gradient(
+        45deg,
+        #8b0000 25%,
+        #b22222 25%,
+        #b22222 50%,
+        #8b0000 50%,
+        #8b0000 75%,
+        #b22222 75%
+    );
+    background-size:20px 20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.5);
+}
+
+.back-card:first-child{
+    margin-left:0;
+}
+
+.player-cards{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    align-items:flex-end;
+}
+
+.letters-div,
+.manilha{
+    width:120px;
+    height:180px;
+    border-radius:15px;
+    border:3px solid #333;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2rem;
+    font-weight:bold;
+    cursor:pointer;
+    margin-left:-40px;
+    position:relative;
+    transition:.2s;
+    box-shadow:0 5px 15px rgba(0,0,0,.4);
+}
+
+.letters-div{
+    background:white;
+    color:black;
+}
+
+.manilha{
+    background:gold;
+    color:black;
+}
+
+.letters-div:hover,
+.manilha:hover{
+    transform:translateY(-20px) scale(1.05);
+    z-index:100;
+}
+
+@media(max-width:768px){
+    .letters-div,
+    .manilha,
+    .back-card{
+        width:90px;
+        height:140px;
+        font-size:1.5rem;
+        margin-left:-30px;
+    }
+}
+
+@media(max-width:480px){
+    .letters-div,
+    .manilha,
+    .back-card{
+        width:70px;
+        height:110px;
+        font-size:1.2rem;
+        margin-left:-20px;
+    }
+}
+/* ── Placar e info de rodada ── */
+#scoreboard {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+#round-info {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    margin-bottom: 18px;
+}
+
+/* ── Arena central (cartas jogadas) ── */
+#arena {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    z-index: 200;
+    pointer-events: none;
+}
+
+.played-card {
+    width: 100px;
+    height: 150px;
+    border-radius: 12px;
+    border: 3px solid #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: white;
+    color: black;
+    box-shadow: 0 8px 24px rgba(0,0,0,.6);
+    animation: popIn .18s ease;
+}
+
+.vs {
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-shadow: 0 0 12px currentColor;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.6); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+}
+
+/* ── resultado ── */
+#result {
+    font-size: 1.1rem;
+    min-height: 28px;
+    margin-bottom: 8px;
+    text-align: center;
+    transition: color .3s;
+}
